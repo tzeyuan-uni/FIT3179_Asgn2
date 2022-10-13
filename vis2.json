@@ -1,0 +1,757 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "An example of treemap layout for hierarchical data.",
+  "width": 800,
+  "height": 600,
+  "padding": 2.5,
+  "autosize": "none",
+  "signals": [
+    {
+      "name": "Layout",
+      "value": "squarify",
+      "bind": {
+        "input": "select",
+        "options": ["squarify", "binary", "slicedice"]
+      }
+    },
+    {
+      "name": "Aspect Ratio",
+      "value": 1.6,
+      "bind": {"input": "range", "min": 1, "max": 5, "step": 0.1}
+    }
+  ],
+  "data": [
+    {
+      "name": "tree",
+      "values": [
+        {
+          "id": "1",
+          "parent": "",
+          "x0": 0,
+          "y0": 0,
+          "x1": 800,
+          "y1": 600,
+          "depth": 0,
+          "children": 4
+        },
+        {
+          "Country": "Americas",
+          "id": "2",
+          "parent": "1",
+          "x0": 155,
+          "y0": 232,
+          "x1": 800,
+          "y1": 600,
+          "depth": 1,
+          "children": 15
+        },
+        {
+          "Country": "Africa",
+          "id": "3",
+          "parent": "1",
+          "x0": 0,
+          "y0": 0,
+          "x1": 155,
+          "y1": 24,
+          "depth": 1,
+          "children": 2
+        },
+        {
+          "Country": "Asia",
+          "id": "4",
+          "parent": "1",
+          "x0": 155,
+          "y0": 0,
+          "x1": 800,
+          "y1": 232,
+          "depth": 1,
+          "children": 16
+        },
+        {
+          "Country": "Europe",
+          "id": "5",
+          "parent": "1",
+          "x0": 0,
+          "y0": 24,
+          "x1": 155,
+          "y1": 600,
+          "depth": 1,
+          "children": 15
+        },
+        {
+          "Country": "Egypt",
+          "Confirmed": "106230",
+          "id": "21",
+          "parent": "3",
+          "x0": 0,
+          "y0": 0,
+          "x1": 56,
+          "y1": 24,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Morocco",
+          "Confirmed": "190416",
+          "id": "40",
+          "parent": "3",
+          "x0": 56,
+          "y0": 0,
+          "x1": 155,
+          "y1": 24,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Argentina",
+          "Confirmed": "1069368",
+          "id": "62",
+          "parent": "2",
+          "x0": 188,
+          "y0": 509,
+          "x1": 334,
+          "y1": 600,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Bolivia",
+          "Confirmed": "140612",
+          "id": "66",
+          "parent": "2",
+          "x0": 155,
+          "y0": 406,
+          "x1": 188,
+          "y1": 459,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Brazil",
+          "Confirmed": "5353656",
+          "id": "67",
+          "parent": "2",
+          "x0": 334,
+          "y0": 232,
+          "x1": 800,
+          "y1": 374,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Canada",
+          "Confirmed": "214519",
+          "id": "68",
+          "parent": "2",
+          "x0": 155,
+          "y0": 519,
+          "x1": 188,
+          "y1": 600,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Chile",
+          "Confirmed": "498906",
+          "id": "69",
+          "parent": "2",
+          "x0": 188,
+          "y0": 232,
+          "x1": 334,
+          "y1": 274,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Colombia",
+          "Confirmed": "998942",
+          "id": "70",
+          "parent": "2",
+          "x0": 188,
+          "y0": 424,
+          "x1": 334,
+          "y1": 509,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Costa Rica",
+          "Confirmed": "101826",
+          "id": "71",
+          "parent": "2",
+          "x0": 155,
+          "y0": 233,
+          "x1": 188,
+          "y1": 271,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Dominican Republic",
+          "Confirmed": "122873",
+          "id": "74",
+          "parent": "2",
+          "x0": 155,
+          "y0": 311,
+          "x1": 188,
+          "y1": 357,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Ecuador",
+          "Confirmed": "158270",
+          "id": "75",
+          "parent": "2",
+          "x0": 155,
+          "y0": 459,
+          "x1": 188,
+          "y1": 519,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Guatemala",
+          "Confirmed": "103902",
+          "id": "78",
+          "parent": "2",
+          "x0": 155,
+          "y0": 271,
+          "x1": 188,
+          "y1": 311,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Mexico",
+          "Confirmed": "880775",
+          "id": "83",
+          "parent": "2",
+          "x0": 188,
+          "y0": 349,
+          "x1": 334,
+          "y1": 424,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Panama",
+          "Confirmed": "127866",
+          "id": "85",
+          "parent": "2",
+          "x0": 155,
+          "y0": 357,
+          "x1": 188,
+          "y1": 406,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Peru",
+          "Confirmed": "879876",
+          "id": "87",
+          "parent": "2",
+          "x0": 188,
+          "y0": 274,
+          "x1": 334,
+          "y1": 349,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "US",
+          "Confirmed": "8491459",
+          "id": "93",
+          "parent": "2",
+          "x0": 334,
+          "y0": 374,
+          "x1": 800,
+          "y1": 600,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Uruguay",
+          "Confirmed": "2759",
+          "id": "94",
+          "parent": "2",
+          "x0": 155,
+          "y0": 232,
+          "x1": 188,
+          "y1": 233,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Bangladesh",
+          "Confirmed": "396413",
+          "id": "100",
+          "parent": "4",
+          "x0": 307,
+          "y0": 0,
+          "x1": 382,
+          "y1": 66,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "India",
+          "Confirmed": "7814682",
+          "id": "108",
+          "parent": "4",
+          "x0": 382,
+          "y0": 0,
+          "x1": 800,
+          "y1": 232,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Indonesia",
+          "Confirmed": "381910",
+          "id": "109",
+          "parent": "4",
+          "x0": 195,
+          "y0": 189,
+          "x1": 307,
+          "y1": 232,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Iran",
+          "Confirmed": "556891",
+          "id": "110",
+          "parent": "4",
+          "x0": 307,
+          "y0": 140,
+          "x1": 382,
+          "y1": 232,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Iraq",
+          "Confirmed": "445949",
+          "id": "111",
+          "parent": "4",
+          "x0": 307,
+          "y0": 66,
+          "x1": 382,
+          "y1": 140,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Israel",
+          "Confirmed": "308840",
+          "id": "112",
+          "parent": "4",
+          "x0": 195,
+          "y0": 0,
+          "x1": 307,
+          "y1": 34,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Kazakhstan",
+          "Confirmed": "110250",
+          "id": "115",
+          "parent": "4",
+          "x0": 155,
+          "y0": 0,
+          "x1": 195,
+          "y1": 34,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Kuwait",
+          "Confirmed": "120232",
+          "id": "117",
+          "parent": "4",
+          "x0": 155,
+          "y0": 69,
+          "x1": 195,
+          "y1": 106,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Nepal",
+          "Confirmed": "153008",
+          "id": "124",
+          "parent": "4",
+          "x0": 155,
+          "y0": 184,
+          "x1": 195,
+          "y1": 232,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Oman",
+          "Confirmed": "111837",
+          "id": "125",
+          "parent": "4",
+          "x0": 155,
+          "y0": 34,
+          "x1": 195,
+          "y1": 69,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Pakistan",
+          "Confirmed": "327063",
+          "id": "126",
+          "parent": "4",
+          "x0": 195,
+          "y0": 34,
+          "x1": 307,
+          "y1": 71,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Philippines",
+          "Confirmed": "365799",
+          "id": "127",
+          "parent": "4",
+          "x0": 195,
+          "y0": 149,
+          "x1": 307,
+          "y1": 189,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Qatar",
+          "Confirmed": "130711",
+          "id": "128",
+          "parent": "4",
+          "x0": 155,
+          "y0": 144,
+          "x1": 195,
+          "y1": 184,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Saudi Arabia",
+          "Confirmed": "344157",
+          "id": "129",
+          "parent": "4",
+          "x0": 195,
+          "y0": 71,
+          "x1": 307,
+          "y1": 109,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Turkey",
+          "Confirmed": "357693",
+          "id": "137",
+          "parent": "4",
+          "x0": 195,
+          "y0": 109,
+          "x1": 307,
+          "y1": 149,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "United Arab Emirates",
+          "Confirmed": "122273",
+          "id": "138",
+          "parent": "4",
+          "x0": 155,
+          "y0": 106,
+          "x1": 195,
+          "y1": 144,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Belgium",
+          "Confirmed": "287700",
+          "id": "147",
+          "parent": "5",
+          "x0": 32,
+          "y0": 103,
+          "x1": 65,
+          "y1": 209,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Czechia",
+          "Confirmed": "238323",
+          "id": "151",
+          "parent": "5",
+          "x0": 118,
+          "y0": 24,
+          "x1": 155,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "France",
+          "Confirmed": "1048842",
+          "id": "155",
+          "parent": "5",
+          "x0": 0,
+          "y0": 398,
+          "x1": 65,
+          "y1": 600,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Germany",
+          "Confirmed": "426110",
+          "id": "156",
+          "parent": "5",
+          "x0": 105,
+          "y0": 103,
+          "x1": 155,
+          "y1": 209,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Italy",
+          "Confirmed": "484869",
+          "id": "162",
+          "parent": "5",
+          "x0": 0,
+          "y0": 209,
+          "x1": 32,
+          "y1": 398,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Netherlands",
+          "Confirmed": "272401",
+          "id": "172",
+          "parent": "5",
+          "x0": 0,
+          "y0": 103,
+          "x1": 32,
+          "y1": 209,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Poland",
+          "Confirmed": "228318",
+          "id": "175",
+          "parent": "5",
+          "x0": 82,
+          "y0": 24,
+          "x1": 118,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Portugal",
+          "Confirmed": "112440",
+          "id": "176",
+          "parent": "5",
+          "x0": 33,
+          "y0": 24,
+          "x1": 51,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Romania",
+          "Confirmed": "201032",
+          "id": "177",
+          "parent": "5",
+          "x0": 51,
+          "y0": 24,
+          "x1": 82,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Russia",
+          "Confirmed": "1471000",
+          "id": "178",
+          "parent": "5",
+          "x0": 65,
+          "y0": 398,
+          "x1": 155,
+          "y1": 600,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Spain",
+          "Confirmed": "1046132",
+          "id": "183",
+          "parent": "5",
+          "x0": 86,
+          "y0": 209,
+          "x1": 155,
+          "y1": 398,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Sweden",
+          "Confirmed": "110594",
+          "id": "184",
+          "parent": "5",
+          "x0": 16,
+          "y0": 24,
+          "x1": 33,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Switzerland",
+          "Confirmed": "103653",
+          "id": "185",
+          "parent": "5",
+          "x0": 0,
+          "y0": 24,
+          "x1": 16,
+          "y1": 103,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "Ukraine",
+          "Confirmed": "340042",
+          "id": "186",
+          "parent": "5",
+          "x0": 65,
+          "y0": 103,
+          "x1": 105,
+          "y1": 209,
+          "depth": 2,
+          "children": 0
+        },
+        {
+          "Country": "United Kingdom",
+          "Confirmed": "830998",
+          "id": "187",
+          "parent": "5",
+          "x0": 32,
+          "y0": 209,
+          "x1": 86,
+          "y1": 398,
+          "depth": 2,
+          "children": 0
+        }
+      ],
+      "transform": [
+        {"type": "stratify", "key": "id", "parentKey": "parent"},
+        {
+          "type": "treemap",
+          "field": "Confirmed",
+          "sort": {"field": "value"},
+          "round": true,
+          "method": {"signal": "Layout"},
+          "ratio": {"signal": "Aspect Ratio"},
+          "size": [{"signal": "width"}, {"signal": "height"}]
+        }
+      ]
+    },
+    {
+      "name": "nodes",
+      "source": "tree",
+      "transform": [{"type": "filter", "expr": "datum.children"}]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [{"type": "filter", "expr": "!datum.children"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "nodes", "field": "Country"},
+      "range": ["#f6d8ae", "#b00002", "#f6d8ae", "#e85d04", "#faa307"]
+    },
+    {
+      "name": "size",
+      "type": "ordinal",
+      "domain": [0, 1, 2, 3],
+      "range": [256, 28, 20, 14]
+    },
+    {
+      "name": "opacity",
+      "type": "ordinal",
+      "domain": [0, 1, 2, 3],
+      "range": [0.15, 0.5, 0.8, 1]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "nodes"},
+      "interactive": false,
+      "encode": {
+        "enter": {"fill": {"scale": "color", "field": "Country"}},
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {"stroke": {"value": "#fff"}},
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "fill": {"value": "transparent"},
+          "tooltip": {
+            "signal": "datum.Country + ' :  ' + format(datum.Confirmed, ',.0f')"
+          }
+        },
+        "hover": {"fill": {"value": "red"}, "opacity": {"value": 0.5}}
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {"value": "Helvetica Neue, Arial"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fill": {"value": "#000"},
+          "text": {"field": "Country"},
+          "fontSize": {"scale": "size", "field": "depth"},
+          "fillOpacity": {"scale": "opacity", "field": "depth"}
+        },
+        "update": {
+          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
+          "y": {"signal": "0.5 * (datum.y0 + datum.y1)"}
+        }
+      }
+    }
+  ],
+  "config": {}
+}
