@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Global Confirmed Cases by Race",
+  "description": "A simple pie chart with embedded data.",
+  "data": {
+    "values": [
+      {"Race": "Black/African", "population": 4, "cases": 5, "deaths": 4},
+      {"Race": "Asian", "population": 4, "cases": 5, "deaths": 4},
+      {
+        "Race": "Indian/Alaska Native",
+        "population": 14,
+        "cases": 29,
+        "deaths": 35
+      },
+      {"Race": "White", "population": 65, "cases": 43, "deaths": 37},
+      {"Race": "Other", "population": 13, "cases": 18, "deaths": 20}
+    ]
+  },
+  "transform": [
+    {
+      "window": [{"op": "sum", "field": "deaths", "as": "TotalDeath"}],
+      "frame": [null, null]
+    },
+    {"calculate": "datum.deaths/datum.TotalDeath * 100", "as": "PercentDeath"},
+    {
+      "window": [{"op": "sum", "field": "population", "as": "TotalPop"}],
+      "frame": [null, null]
+    },
+    {"calculate": "datum.population/datum.TotalPop * 100", "as": "PercentPop"},
+    {
+      "window": [{"op": "sum", "field": "cases", "as": "Total"}],
+      "frame": [null, null]
+    },
+    {"calculate": "datum.cases/datum.Total * 100", "as": "PercentCase"}
+  ],
+  "hconcat": [
+    {
+      "selection": {
+        "highlight": {"type": "multi", "fields": ["Race"], "bind": "legend"}
+      },
+      "title": {"text": "Population"},
+      "width": 262,
+      "mark": "arc",
+      "encoding": {
+        "theta": {"field": "population", "type": "quantitative"},
+        "color": {
+          "field": "Race",
+          "type": "nominal",
+          "scale": {
+            "range": ["#b00002", "#e85d04", "#faa307", "#ffbf69", "#f6d8ae"]
+          },
+          "legend": {
+            "orient": "none",
+            "direction": "horizontal",
+            "legendY": 230,
+            "legendX": 30
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.27
+        },
+        "tooltip": [
+          {"field": "Race", "type": "nominal"},
+          {"field": "PercentPop", "type": "quantitative", "title": "Percentage"}
+        ]
+      },
+      "view": {"stroke": null}
+    },
+    {
+      "title": {"text": "Total Cases"},
+      "mark": "arc",
+      "encoding": {
+        "theta": {"field": "cases", "type": "quantitative"},
+        "color": {"field": "Race", "type": "nominal"},
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.27
+        },
+        "tooltip": [
+          {"field": "Race", "type": "nominal"},
+          {
+            "field": "PercentCase",
+            "type": "quantitative",
+            "title": "Percentage"
+          }
+        ]
+      },
+      "view": {"stroke": null}
+    },
+    {
+      "title": {"text": "Deaths"},
+      "mark": "arc",
+      "encoding": {
+        "theta": {"field": "deaths", "type": "quantitative"},
+        "color": {
+          "field": "Race",
+          "type": "nominal",
+          "legend": {"labelFontSize": 12, "titleFontSize": 14}
+        },
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.27
+        },
+        "tooltip": [
+          {"field": "Race", "type": "nominal"},
+          {
+            "field": "PercentDeath",
+            "type": "quantitative",
+            "title": "Percentage"
+          }
+        ]
+      },
+      "view": {"stroke": null}
+    }
+  ],
+  "config": {}
+}
