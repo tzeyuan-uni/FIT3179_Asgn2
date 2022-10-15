@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FIT3179: Assignment 2</title>
+  <!-- Import Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Trebuchet MS:ital,wght@0,300;0,500;0,800;1,300;1,500;1,800&display=swap" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- custom CSS -->
+  <style>
+    *{
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    h1{
+      font-size: 45px;
+      font-weight: 800;
+    }
+     body{
+       background-color: black;
+     }
+     .page{
+       width: 1200px;    
+       background-color: white;   
+       margin: auto;
+       padding: 50px;
+       padding-top: 35px;
+    }
+    .vis-container{
+      width: 100%;
+    }
+    .description h2, h1{
+      margin-top:0px;
+    }
+    .description-right {
+      padding-left: 20px;
+    }
+    .description-left{
+      padding-right: 20px;
+    }
+    .pure-g{
+      margin-bottom: 25px;
+    }
+    p{
+     font-size: 18px;
+     font-weight: 300;
+    }
+    .small-font{
+      font-size: 13px;
+      font-weight: 300;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header>    
+    </header>
+ <div class="page">
+
+    <h1>EARLY STAGE 2020 COVID-19 LEARNINGS & INSIGHTS </h1>
+    <br>
+
+  <!-- end pure grid group -->
+  <h2>Countries and cities with high population density and traffic flow accelerates Covid-19 spread</h2>
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+            
+            <p> 
+                The choropleth map shows the normalised confirmed cases over million units. Darker colour
+                represents higher cases density per million popoulation. A population filter by millions
+                is attached to allow better filter of visualisation.
+                <br>
+                <br>
+                1. The Americas and South Asia region shows a high density cases ratio as compared to other
+                regions of the world - this shows that countries with a high population density in general
+                are easier for Covid-19 to be spread among households and communities.
+                <br>
+                <br>
+                2. Countries that hosts big cities with frequent international flights with the likes of the
+                United States, Russia, and a few major European cities shows high vulnerability to Covid-19.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis1" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+    <br>
+    <h2>First and second world countries first to be hit Covid-19, but remaining nations should be alert</h2>
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+            <p>
+                The treemap / marimekko chart shows the share of confirmed cases split across continents and 
+                split into countries. The data is filtered to only include 48 countries with over 100,000 confirmed
+                cases in 2020 that makes up of ~94% of all global cases.
+                <br>
+                <br>
+                1. Early trend shows that Americas and Asia are reaching peak in terms of confirmed cases, closely
+                followed by Europe which is expected to soar with high population density.
+                <br>
+                <br>
+                2. Despite Africa being the smallest share at the current timestamp, we will quickly learnt that low
+                healthcare standards quickly threathens the regions' virus outbreak and mutation.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis2" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+
+    </div>
+    <br>
+    <h2> Asia lags behind Americas and Europe in terms of Covid-19 recovery due to healthcare system</h2>
+
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+        <p>
+            The Sankey diagram visualises the outcome of Covid-19 cases by three categories of active, decreased,
+            or recovered. These are further split by regions which illustrates a better view of active/recovery
+            ratio among diffreent regions of the world.
+            <br>
+            <br>
+            1. The Americas and Europe are having near to half portions of Covid-19 patients that are quickly
+            recovering or recovered from the virus, whereas Asia is lagging behind at only ~10% recovered cases
+            despite being one of the earliest regions to be infected.
+            <br>
+            <br>
+            2. This implies that quality of life, specifically healthcare offerings are crucial in the times of crisis
+            where nations from better income status have better capacity in overcoming critical cases of Covid-19
+        </p>  
+        </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis3" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+    <br>
+    <h2>The younger generations are more exposed but elderly are critical if affected</h2>
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+           <p>
+            
+            Breaking down the data into genders and age groups gives a better view on how the virus in
+            infecting different types of individuals. This two sided bar charts shows Australia's confirmed cases
+            across 9 different age groups.
+            
+            <br>
+            <br>
+            1. As observed from the chart, individuals from the 20-29 age groups has the highest chance of getting
+            infected, whereas elderly as less likely to get infected as comparison.
+            <br>
+            <br>
+            2. Despite the count value, we should be aware that elderly and toddlers poses huge risks when getting infected
+            as the chances of recovery might be significantly lower.
+        
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis4" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+    </div>
+    <br>
+    <h2> Indians are greatly affected as compared to other races </h2>
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+        
+           <p>
+            
+            Breaking down the data into genders and age groups gives a better view on how the virus in
+            infecting different types of individuals. This two sided bar charts shows Australia's confirmed cases
+            across 9 different age groups.
+            
+            <br>
+            <br>
+            1. As observed from the chart, individuals from the 20-29 age groups has the highest chance of getting
+            infected, whereas elderly as less likely to get infected as comparison.
+            <br>
+            <br>
+            2. Despite the count value, we should be aware that elderly and toddlers poses huge risks when getting infected
+            as the chances of recovery might be significantly lower.
+        
+            </p>
+        </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis5" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+    </div>
+    <br>
+<br>
+    <h2> Death/recovery ratio remains as important statistic for country to track progress</h2>
+       
+    <div class="pure-g">
+        <div class="pure-u-1-4">
+          <div class="description description-left">
+            <p>
+            
+                The bubble charts brings in multiple elements of the data across region, countries, confirmed cases,
+                death counts, and recovered counts. This allow us to further explore any potential relationship between
+                datasets that could lead to useful insights.
+                
+                <br>
+                <br>
+                1. The higher the bubble, the more confirmed cases they are for the country, hecne it makes sense for larger
+                bubbles to be higher up in the chart as they naturally has more deaths
+                <br>
+                <br>
+                2. Interestingly, there are no conclusie relationships found for this plot as all countries are near to equally
+                well split across the plot area. One standout was the observation where we see the US and Brazil having identical
+                confirmed cases and death counts, but Brazil is performing better with >2 times of recovered cases.
+            
+                </p>
+          </div>
+        </div>
+        <div class="pure-u-3-4">
+          <div id="vis6" class="vis-container" style="padding-top: 14px;"></div>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+    <br>
+    <br>
+    <br>
+    <br> 
+    <br>
+    <br> 
+    <hr>
+    <h3> Created by Koay Tze Yuan</h3>
+    </div>
+  
+  
+  </div> <!-- end page -->
+   
+<script type="text/javascript">
+  var choroplethVis =   "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis1.json";
+  var treemapVis =      "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis2.json";
+  var sankeyVis =       "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis3.json";
+  var pyramidVis =      "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis4.json";
+  var pieVis =          "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis5.json";
+  var bubbleVis =       "https://raw.githubusercontent.com/tzeyuan-uni/FIT3179_Asgn2/main/vis6.json";
+
+  vegaEmbed('#vis1', choroplethVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  vegaEmbed('#vis3', sankeyVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis2', treemapVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis5', pieVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  vegaEmbed('#vis4', pyramidVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+   vegaEmbed('#vis6', bubbleVis, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+</body>
+</html>
